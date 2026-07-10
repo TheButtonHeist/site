@@ -26,39 +26,35 @@ description: Make the iOS accessibility contract programmable.
   </section>
 
   <section class="contract-flow" aria-label="The Button Heist execution model">
-    <article class="panel hierarchy-panel">
-      <h2>Settled contract</h2>
-      <ol class="tree">
-        <li>
-          <span class="node-icon app-icon" aria-hidden="true"></span>
-          <span>App</span>
-          <ol>
-            <li>
-              <span class="node-icon window-icon" aria-hidden="true"></span>
-              <span>Window</span>
-              <ol>
-                <li>
-                  <span class="node-icon button-icon" aria-hidden="true"></span>
-                  <span>Pay</span>
-                </li>
-                <li>
-                  <span class="node-icon value-icon" aria-hidden="true"></span>
-                  <span>Total</span>
-                </li>
-                <li>
-                  <span class="node-icon receipt-icon" aria-hidden="true"></span>
-                  <span>Receipt</span>
-                </li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-      </ol>
+    <article class="panel screen-panel">
+      <h2>Settled screen</h2>
+      <div class="screen-state" aria-label="Accessible elements and actions">
+        <div class="screen-row">
+          <span class="element-kind">button</span>
+          <strong>Pay</strong>
+          <span class="action-chip">activate</span>
+        </div>
+        <div class="screen-row">
+          <span class="element-kind">static text</span>
+          <strong>Total</strong>
+          <span class="value-chip">$49.00</span>
+        </div>
+        <div class="screen-row">
+          <span class="element-kind">text field</span>
+          <strong>Email</strong>
+          <span class="action-chip">type text</span>
+        </div>
+        <div class="screen-row">
+          <span class="element-kind">adjustable</span>
+          <strong>Quantity</strong>
+          <span class="action-chip">increment</span>
+        </div>
+      </div>
     </article>
 
-    <div class="action-step" aria-label="Declared accessibility action">
-      <span>declared action</span>
-      <code>accessibilityActivate()</code>
+    <div class="action-step" aria-label="Action against a specific accessibility element">
+      <span>action on element</span>
+      <code>Activate(.label("Pay"))</code>
     </div>
 
     <article class="panel diff-panel">
@@ -75,24 +71,24 @@ description: Make the iOS accessibility contract programmable.
       </dl>
     </article>
 
-    <article class="panel receipt-panel">
-      <h2>Receipt</h2>
-      <dl class="receipt-list">
+    <article class="panel expectation-panel">
+      <h2>Expectation</h2>
+      <dl class="expectation-list">
         <div>
-          <dt>before</dt>
-          <dd>settled contract</dd>
+          <dt>expect</dt>
+          <dd>appeared</dd>
         </div>
         <div>
-          <dt>action</dt>
-          <dd>declared activation</dd>
+          <dt>target</dt>
+          <dd>label("Payment Complete")</dd>
         </div>
         <div>
-          <dt>after</dt>
-          <dd>settled contract</dd>
+          <dt>evidence</dt>
+          <dd>matched diff</dd>
         </div>
         <div>
           <dt>result</dt>
-          <dd>contract held</dd>
+          <dd>expectation held</dd>
         </div>
       </dl>
     </article>

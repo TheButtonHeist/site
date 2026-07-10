@@ -210,47 +210,6 @@ p {
   text-align: center;
 }
 
-.tree,
-.tree ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tree {
-  padding: 1.05rem 1.25rem 1.35rem;
-  color: var(--text);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 1.02rem;
-}
-
-.tree li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  align-items: center;
-  gap: 0.65rem;
-  min-height: 36px;
-}
-
-.tree ol {
-  grid-column: 1 / -1;
-  margin-left: 16px;
-  padding-left: 18px;
-  border-left: 1px solid rgba(238, 230, 212, 0.32);
-}
-
-.tree ol li::before {
-  position: absolute;
-  top: 18px;
-  left: -18px;
-  width: 16px;
-  height: 1px;
-  content: "";
-  background: rgba(238, 230, 212, 0.32);
-}
-
-.node-icon,
 .outcome-icon {
   display: inline-grid;
   place-items: center;
@@ -258,46 +217,59 @@ p {
   color: var(--accent);
 }
 
-.node-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 4px;
+.screen-state {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.05rem 1.25rem 1.35rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
-.button-icon,
-.value-icon,
-.receipt-icon {
+.screen-row {
+  display: grid;
+  grid-template-columns: minmax(82px, 0.8fr) minmax(68px, 0.82fr) minmax(88px, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.62rem 0.7rem;
+  border: 1px solid rgba(238, 230, 212, 0.12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.screen-row:first-child {
   border-color: var(--border);
   background: var(--accent-soft);
 }
 
-.app-icon::before,
-.window-icon::before,
-.button-icon::before,
-.value-icon::before,
-.receipt-icon::before {
+.element-kind {
+  color: var(--faint);
+  font-size: 0.8rem;
+}
+
+.screen-row strong {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 680;
+}
+
+.action-chip,
+.value-chip {
+  justify-self: end;
+  max-width: 100%;
+  padding: 0.35rem 0.48rem;
+  border: 1px solid rgba(216, 168, 79, 0.42);
+  border-radius: 999px;
+  color: var(--accent);
+  background: rgba(216, 168, 79, 0.09);
   font-size: 0.78rem;
   line-height: 1;
+  white-space: nowrap;
 }
 
-.app-icon::before {
-  content: "A";
-}
-
-.window-icon::before {
-  content: "W";
-}
-
-.button-icon::before {
-  content: "B";
-}
-
-.value-icon::before {
-  content: "V";
-}
-
-.receipt-icon::before {
-  content: "R";
+.value-chip {
+  border-color: rgba(238, 230, 212, 0.18);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .action-step {
@@ -346,7 +318,7 @@ p {
 }
 
 .diff-list,
-.receipt-list {
+.expectation-list {
   display: grid;
   gap: 0;
   margin: 0;
@@ -355,7 +327,7 @@ p {
 }
 
 .diff-list div,
-.receipt-list div {
+.expectation-list div {
   display: grid;
   grid-template-columns: minmax(88px, 0.8fr) minmax(0, 1fr);
   gap: 1rem;
@@ -363,8 +335,12 @@ p {
   border-bottom: 1px solid rgba(238, 230, 212, 0.13);
 }
 
+.expectation-list div {
+  grid-template-columns: minmax(72px, 0.58fr) minmax(0, 1.42fr);
+}
+
 .diff-list div:last-child,
-.receipt-list div:last-child {
+.expectation-list div:last-child {
   border-bottom: 0;
 }
 
@@ -378,6 +354,11 @@ dd {
   color: var(--text);
 }
 
+.expectation-list dd {
+  overflow-wrap: anywhere;
+  line-height: 1.18;
+}
+
 .diff-list div:first-child dt::before {
   content: "+ ";
   color: var(--good);
@@ -388,7 +369,7 @@ dd {
   color: var(--accent);
 }
 
-.receipt-list div:last-child dd {
+.expectation-list div:last-child dd {
   color: var(--good);
 }
 
@@ -532,7 +513,7 @@ dd {
     order: 3;
   }
 
-  .receipt-panel {
+  .expectation-panel {
     order: 4;
   }
 
