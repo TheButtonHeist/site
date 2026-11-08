@@ -1,7 +1,0 @@
-title: The Button Heist
-description: Make the iOS accessibility contract programmable.
-url: https://thebuttonheist.com
-markdown: kramdown
-
-exclude:
-  - README.md
